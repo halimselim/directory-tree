@@ -20,7 +20,16 @@ import javax.swing.JTree;
 var model = new DirTreeModel<>(DirTreeUtils.NAME_COMPARATOR, true, true, new DefaultNodeFactory());
 JTree tree = new JTree();
 DirTreeUtils.configureTree(tree, model);
+
+//to get the selected directory use jtree selection listener by "addTreeSelectionListener"
+        TreePath tp = evt.getNewLeadSelectionPath();
+        if (tp != null) {
+            DefaultDirNode node = (DefaultDirNode) (tp.getLastPathComponent());
+            Path directory = node.getDirectory();
+        }
 ```
+
+
 
 A demo application is provided. See `org.swingk.io.dirtree.demo.Demo`.
 
